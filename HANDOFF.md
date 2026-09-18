@@ -73,7 +73,7 @@ university program (Sept to Dec) as first stage, run as a real business.
 **Infra:** Vercel project `zynergy` (scope `devdanzen-projects`, deploy via
 `vercel deploy --prod`), **Neon Postgres** (`neon-yellow-window`, us-east-1)
 + **Vercel Blob** (`zynergy-uploads`). Migrations run at build time
-(`vercel.json`, unpooled URL for migrate). GitHub **danish-deepskill/zynergy**
+(`vercel.json`, unpooled URL for migrate). GitHub **zynergyid/zynergy** (dipindah 2026-09-19 dari akun pribadi ke organisasi zynergyid bersama zynergy-hub)
 (public; no Vercel git integration yet; plan: move to a `zynergyid` org and
 consider making it private). Prod `/admin` awaits first-user creation
 (never seeded). Gotcha: keep the Payload Blob plugin registered
