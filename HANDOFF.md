@@ -70,12 +70,17 @@ only). Originally modeled on digitalinaja.id, later repositioned upmarket.
 User/team: team@deepskill.io, six-person part-time team, PERINTIS 2026
 university program (Sept to Dec) as first stage, run as a real business.
 
-**Infra:** Vercel project `zynergy` (scope `devdanzen-projects`, deploy via
-`vercel deploy --prod`), **Neon Postgres** (`neon-yellow-window`, us-east-1)
+**Infra:** Vercel project `zynergy` (scope `devdanzen-projects`; since
+2026-09-19 Git-connected to github.com/zynergyid/zynergy with production
+branch `production` and an ignored-build-step rule that skips every other
+branch, so pushing `main` builds nothing and "deploy" =
+`git push origin main:production`, watched via `vercel ls zynergy --scope
+devdanzen-projects`; the CLI `vercel deploy --prod` still works as fallback),
+**Neon Postgres** (`neon-yellow-window`, us-east-1)
 + **Vercel Blob** (`zynergy-uploads`). Migrations run at build time
 (`vercel.json`, unpooled URL for migrate). GitHub **zynergyid/zynergy** (dipindah 2026-09-19 dari akun pribadi ke organisasi zynergyid bersama zynergy-hub)
-(public; no Vercel git integration yet; plan: move to a `zynergyid` org and
-consider making it private). Prod `/admin` awaits first-user creation
+(public; the hub repo is private and therefore cannot be Git-connected on
+Vercel Hobby, see the hub HANDOFF). Prod `/admin` awaits first-user creation
 (never seeded). Gotcha: keep the Payload Blob plugin registered
 unconditionally (enabled-flag gating) or the admin importMap breaks.
 
