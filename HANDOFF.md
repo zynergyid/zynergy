@@ -104,9 +104,15 @@ devdanzen-projects`; the CLI `vercel deploy --prod` still works as fallback),
 **Neon Postgres** (`neon-yellow-window`, us-east-1)
 + **Vercel Blob** (`zynergy-uploads`). Migrations run at build time
 (`vercel.json`, unpooled URL for migrate). GitHub **zynergyid/zynergy** (dipindah 2026-09-19 dari akun pribadi ke organisasi zynergyid bersama zynergy-hub)
-(public; the hub repo is private and therefore cannot be Git-connected on
-Vercel Hobby, see the hub HANDOFF). Prod `/admin` awaits first-user creation
-(never seeded). Gotcha: keep the Payload Blob plugin registered
+(public; the hub repo is public too since 2026-09-19 so both deploy over
+Git). Prod users: at least one account existed before 2026-09-20 (owner
+unknown, first-register is closed) plus the service user `hub@zynergy.co.id`
+created 2026-09-20 by `scripts/create-hub-user.ts` against the prod DB;
+its API key had to be regenerated over REST on prod because PAYLOAD_SECRET
+is a Sensitive env var that `vercel env pull` cannot read (details in the
+hub HANDOFF, section SEO). Deployed 2026-09-20: commit ec88fcd (site-settings
+global, page metadata from CMS, API keys on users, two migrations) via
+`git push origin main:production`, build READY in about a minute. Gotcha: keep the Payload Blob plugin registered
 unconditionally (enabled-flag gating) or the admin importMap breaks.
 
 ---
