@@ -7,6 +7,8 @@ export function WhatsAppFloat() {
   return (
     <a
       href={waLink(siteConfig.waMessages.default)}
+      data-umami-event="whatsapp"
+      data-umami-event-place="tombol-melayang"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat via WhatsApp"

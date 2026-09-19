@@ -75,6 +75,8 @@ export function Footer() {
             <li>
               <a
                 href={waLink(siteConfig.waMessages.default)}
+                data-umami-event="whatsapp"
+                data-umami-event-place="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 text-sm text-muted transition-colors hover:text-primary"

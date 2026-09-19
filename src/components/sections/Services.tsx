@@ -28,6 +28,8 @@ export function Services() {
         Tidak menemukan kebutuhan Anda?{" "}
         <a
           href={waLink(siteConfig.waMessages.default)}
+          data-umami-event="whatsapp"
+          data-umami-event-place="layanan"
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold text-primary hover:underline"

@@ -35,7 +35,7 @@ export function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp">
+            <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp" track="whatsapp" place="hero">
               <WhatsAppIcon className="size-4" />
               Konsultasi Gratis
             </CtaLink>

@@ -66,7 +66,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <CtaLink href={waLink(siteConfig.waMessages.default)} className="px-5 py-2.5">
+          <CtaLink href={waLink(siteConfig.waMessages.default)} className="px-5 py-2.5" track="whatsapp" place="header">
             Konsultasi Gratis
           </CtaLink>
         </div>
@@ -103,6 +103,8 @@ export function Header() {
           <CtaLink
             href={waLink(siteConfig.waMessages.default)}
             className="mt-3 w-full"
+            track="whatsapp"
+            place="menu"
           >
             Konsultasi Gratis
           </CtaLink>

@@ -176,7 +176,7 @@ export default function SupplyPage() {
               {supplyPage.ctaSubtitle}
             </p>
             <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-              <CtaLink href={waLink(siteConfig.waMessages.pengadaan)} variant="whatsapp">
+              <CtaLink href={waLink(siteConfig.waMessages.pengadaan)} variant="whatsapp" track="whatsapp" place="supply">
                 <WhatsAppIcon className="size-4" />
                 {supplyPage.cta}
               </CtaLink>

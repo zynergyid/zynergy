@@ -27,7 +27,7 @@ export function BriefForm() {
           respon lebih cepat? Chat kami langsung.
         </p>
         <div className="mt-6">
-          <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp">
+          <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp" track="whatsapp" place="brief">
             Chat via WhatsApp
           </CtaLink>
         </div>

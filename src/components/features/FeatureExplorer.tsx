@@ -165,6 +165,8 @@ export function FeatureExplorer({
         {featuresSection.footerNote}{" "}
         <a
           href={waLink(siteConfig.waMessages.default)}
+          data-umami-event="whatsapp"
+          data-umami-event-place="fitur-atas"
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold text-primary hover:underline"
@@ -192,6 +194,8 @@ export function FeatureExplorer({
               {selectedAddOns.length > 0 && ` + ${selectedAddOns.length} tambahan`}
             </span>
             <CtaLink
+              track="whatsapp"
+              place="fitur"
               href={waLink(
                 siteConfig.waMessages.features(
                   selectedTitles.join(", "),

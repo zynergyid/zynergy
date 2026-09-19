@@ -52,7 +52,7 @@ export default function DesignPage() {
             {designPage.subtitle}
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <CtaLink href={waHref} variant="whatsapp">
+            <CtaLink href={waHref} variant="whatsapp" track="whatsapp" place="design">
               <WhatsAppIcon className="size-4" />
               {designPage.cta}
             </CtaLink>
@@ -134,7 +134,7 @@ export default function DesignPage() {
             {finalCta.subtitle}
           </p>
           <div className="mt-9 flex justify-center">
-            <CtaLink href={waHref} variant="whatsapp" className="shadow-black/10">
+            <CtaLink href={waHref} variant="whatsapp" className="shadow-black/10" track="whatsapp" place="design-bawah">
               <WhatsAppIcon className="size-4" />
               {finalCta.cta}
             </CtaLink>

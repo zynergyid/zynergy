@@ -28,6 +28,8 @@ export function Faq() {
             <CtaLink
               href={waLink(siteConfig.waMessages.default)}
               variant="whatsapp"
+              track="whatsapp"
+              place="faq"
               className="mt-5"
             >
               <WhatsAppIcon className="size-4" />

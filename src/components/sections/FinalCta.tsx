@@ -36,6 +36,8 @@ export function FinalCta() {
           <CtaLink
             href={waLink(siteConfig.waMessages.default)}
             variant="whatsapp"
+            track="whatsapp"
+            place="penutup"
             className="shadow-black/10"
           >
             <WhatsAppIcon className="size-4" />

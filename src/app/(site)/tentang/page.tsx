@@ -104,7 +104,7 @@ export default function TentangPage() {
         </div>
 
         <div className="mt-14 text-center">
-          <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp">
+          <CtaLink href={waLink(siteConfig.waMessages.default)} variant="whatsapp" track="whatsapp" place="tentang">
             <WhatsAppIcon className="size-4" />
             Ngobrol dengan Tim Kami
           </CtaLink>

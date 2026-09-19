@@ -83,6 +83,8 @@ export function Pricing() {
                 ))}
               </ul>
               <CtaLink
+                track="whatsapp"
+                place={`harga-${tier.name.toLowerCase()}`}
                 href={waLink(siteConfig.waMessages.package(tier.name))}
                 variant={tier.highlighted ? "primary" : "outline"}
                 className={cn(
@@ -112,6 +114,8 @@ export function Pricing() {
           <CtaLink
             href={waLink(siteConfig.waMessages.custom)}
             variant="whatsapp"
+            track="whatsapp"
+            place="harga-custom"
             className="shrink-0"
           >
             {pricing.customTier.cta}
