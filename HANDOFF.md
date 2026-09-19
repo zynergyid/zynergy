@@ -70,6 +70,16 @@ only). Originally modeled on digitalinaja.id, later repositioned upmarket.
 User/team: team@deepskill.io, six-person part-time team, PERINTIS 2026
 university program (Sept to Dec) as first stage, run as a real business.
 
+**Analytics (2026-09-19):** self-hosted Umami at stats.zynergy.co.id (repo
+zynergyid/umami, Vercel project zynergy-umami, Neon free; details in the hub
+HANDOFF "Statistik web"). The site loads the tracker from
+`NEXT_PUBLIC_UMAMI_SRC` with `NEXT_PUBLIC_UMAMI_WEBSITE_ID` (production env;
+leave both empty locally to disable). Every WhatsApp button carries
+`data-umami-event="whatsapp"` plus `data-umami-event-place` (via `CtaLink`
+`track`/`place` props or plain data attributes): keep that when adding a new
+WhatsApp link, it is the site's only conversion metric. No cookies, no
+consent banner needed.
+
 **Infra:** Vercel project `zynergy` (scope `devdanzen-projects`; since
 2026-09-19 Git-connected to github.com/zynergyid/zynergy with production
 branch `production` and an ignored-build-step rule that skips every other
