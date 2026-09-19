@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { FileDown, Mail } from "lucide-react";
 import { supplyPage } from "@/content/company";
 import { siteConfig } from "@/content/site";
@@ -10,10 +10,7 @@ import { Reveal } from "@/components/ui/Reveal";
 import { Section } from "@/components/ui/Section";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-export const metadata: Metadata = {
-  title: "Pengadaan Barang Industri | PT Sinergi Mitra Abadi Jaya",
-  description: supplyPage.subtitle,
-};
+export const generateMetadata = () => pageMetadata("supply");
 
 export default function SupplyPage() {
   return (

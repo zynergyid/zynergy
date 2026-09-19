@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { nameMeaning, teamMembers, tentangSection } from "@/content/team";
 import { siteConfig } from "@/content/site";
@@ -10,10 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-export const metadata: Metadata = {
-  title: "Tentang Kami",
-  description: tentangSection.subtitle,
-};
+export const generateMetadata = () => pageMetadata("tentang");
 
 function initials(name: string): string {
   return name

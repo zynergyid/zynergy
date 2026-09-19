@@ -70,6 +70,21 @@ only). Originally modeled on digitalinaja.id, later repositioned upmarket.
 User/team: team@deepskill.io, six-person part-time team, PERINTIS 2026
 university program (Sept to Dec) as first stage, run as a real business.
 
+**SEO editable from the Hub (2026-09-20):** global `site-settings`
+(`src/globals/SiteSettings.ts`): `share` (title, description for link
+previews) and `pages.<key>` (title, description) for the nine pages listed in
+`src/content/seo.ts`, which also holds the code defaults. Empty fields fall
+back to the defaults (`src/lib/seo.ts` `pageMetadata`/`shareMetadata`); every
+page exports `generateMetadata = () => pageMetadata("<key>")` and the (site)
+layout has `revalidate = 300`, so edits show within five minutes without a
+deploy. Read is public, update needs a logged-in user. The Hub edits it as the
+service user `hub@zynergy.co.id` (Users now `auth: { useAPIKey: true }`)
+created by `HUB_USER_OUT=<file> pnpm payload run scripts/create-hub-user.ts`
+(idempotent, writes the key to the file, never prints it); the Hub keeps
+`SITE_API_URL` and `SITE_API_KEY`. Migration
+`20260919_182605_site_settings_and_api_keys`. Adding a page: add it to
+`seoPages` here AND to `siteSeoPages` in the hub (`src/lib/site-seo.ts`).
+
 **Analytics (2026-09-19):** self-hosted Umami at stats.zynergy.co.id (repo
 zynergyid/umami, Vercel project zynergy-umami, Neon free; details in the hub
 HANDOFF "Statistik web"). The site loads the tracker from

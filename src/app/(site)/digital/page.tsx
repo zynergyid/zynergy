@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { faq } from "@/content/landing";
 import { siteConfig } from "@/content/site";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -16,10 +16,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 
-export const metadata: Metadata = {
-  title: "Website, Branding & Digital Marketing",
-  description: siteConfig.description,
-};
+export const generateMetadata = () => pageMetadata("digital");
 
 export default function DigitalPage() {
   return (

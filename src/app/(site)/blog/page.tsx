@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import type { Media } from "@/payload-types";
 import { getPayloadClient } from "@/lib/payload";
@@ -8,11 +8,7 @@ import { formatDate } from "@/lib/date";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Blog",
-  description:
-    "Tips website, digital marketing, dan studi kasus untuk membantu bisnis Anda berkembang online.",
-};
+export const generateMetadata = () => pageMetadata("blog");
 
 export default async function BlogPage() {
   const payload = await getPayloadClient();

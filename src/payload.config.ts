@@ -11,6 +11,7 @@ import { Media } from "@/collections/Media";
 import { Posts } from "@/collections/Posts";
 import { Projects } from "@/collections/Projects";
 import { Users } from "@/collections/Users";
+import { SiteSettings } from "@/globals/SiteSettings";
 import { briefUpload } from "@/content/brief";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -29,6 +30,7 @@ export default buildConfig({
     },
   },
   collections: [Posts, Projects, Media, Leads, LeadFiles, Users],
+  globals: [SiteSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   db: postgresAdapter({

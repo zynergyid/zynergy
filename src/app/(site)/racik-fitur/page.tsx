@@ -1,15 +1,11 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { quizSection } from "@/content/quiz";
 import { parseAddOnsParam, parseSelectionParam } from "@/components/features/selectionUrl";
 import { RacikFlow } from "@/components/racik/RacikFlow";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
-export const metadata: Metadata = {
-  title: "Cek & Racik Fitur Website",
-  description:
-    "Cek dalam 1 menit apakah bisnis Anda butuh website, lalu racik fitur yang dibutuhkan. Kirim hasilnya langsung via WhatsApp. Gratis, tanpa komitmen.",
-};
+export const generateMetadata = () => pageMetadata("racikFitur");
 
 interface RacikFiturPageProps {
   searchParams: Promise<{ f?: string; a?: string }>;

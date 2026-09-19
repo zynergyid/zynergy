@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import type { Media, Project } from "@/payload-types";
 import { projectCategories } from "@/collections/Projects";
 import { getPayloadClient } from "@/lib/payload";
@@ -9,11 +9,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
-  title: "Portofolio",
-  description:
-    "Website yang kami bangun untuk UMKM, personal brand, dan bisnis lokal di seluruh Indonesia.",
-};
+export const generateMetadata = () => pageMetadata("portofolio");
 
 const categoryLabels = new Map<string, string>(
   projectCategories.map((category) => [category.value, category.label]),

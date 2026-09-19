@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { siteConfig } from "@/content/site";
+import { shareMetadata } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
@@ -12,25 +13,31 @@ const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.name} | Digital, Design, Apps & Supply`,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  openGraph: {
-    type: "website",
-    locale: "id_ID",
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} | Digital, Design, Apps & Supply`,
-    description: siteConfig.description,
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-};
+/** Edits from the Hub reach every page within five minutes without a deploy. */
+export const revalidate = 300;
+
+export async function generateMetadata(): Promise<Metadata> {
+  const share = await shareMetadata();
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: {
+      default: share.title,
+      template: `%s | ${siteConfig.name}`,
+    },
+    description: share.description,
+    openGraph: {
+      type: "website",
+      locale: "id_ID",
+      url: siteConfig.url,
+      siteName: siteConfig.name,
+      title: share.title,
+      description: share.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+    },
+  };
+}
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

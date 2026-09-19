@@ -95,8 +95,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'site-settings': SiteSetting;
+  };
+  globalsSelect: {
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -285,6 +289,9 @@ export interface User {
   name?: string | null;
   updatedAt: string;
   createdAt: string;
+  enableAPIKey?: boolean | null;
+  apiKey?: string | null;
+  apiKeyIndex?: string | null;
   email: string;
   resetPasswordToken?: string | null;
   resetPasswordExpiration?: string | null;
@@ -517,6 +524,9 @@ export interface UsersSelect<T extends boolean = true> {
   name?: T;
   updatedAt?: T;
   createdAt?: T;
+  enableAPIKey?: T;
+  apiKey?: T;
+  apiKeyIndex?: T;
   email?: T;
   resetPasswordToken?: T;
   resetPasswordExpiration?: T;
@@ -571,6 +581,135 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * Tautan profil bisnis di Google Maps; dipakai untuk penilaian SEO dan structured data.
+   */
+  businessProfileUrl?: string | null;
+  share?: {
+    title?: string | null;
+    description?: string | null;
+  };
+  pages?: {
+    home?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    digital?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    design?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    supply?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    racikFitur?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    briefProject?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    portofolio?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    tentang?: {
+      title?: string | null;
+      description?: string | null;
+    };
+    blog?: {
+      title?: string | null;
+      description?: string | null;
+    };
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  businessProfileUrl?: T;
+  share?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  pages?:
+    | T
+    | {
+        home?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        digital?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        design?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        supply?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        racikFitur?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        briefProject?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        portofolio?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        tentang?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+        blog?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

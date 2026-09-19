@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { businessLines, companyHome } from "@/content/company";
@@ -10,10 +10,7 @@ import { GridPattern } from "@/components/ui/GridPattern";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Reveal } from "@/components/ui/Reveal";
 
-export const metadata: Metadata = {
-  title: `${siteConfig.name} | Digital, Design, Apps & Supply`,
-  description: companyHome.subtitle,
-};
+export const generateMetadata = () => pageMetadata("home");
 
 export default function Home() {
   return (

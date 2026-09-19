@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { designPage } from "@/content/design";
@@ -11,10 +11,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 
-export const metadata: Metadata = {
-  title: "Branding, Packaging & Print",
-  description: designPage.subtitle,
-};
+export const generateMetadata = () => pageMetadata("design");
 
 const waHref = waLink(siteConfig.waMessages.design);
 

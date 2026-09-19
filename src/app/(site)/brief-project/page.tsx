@@ -1,13 +1,9 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BriefForm } from "./BriefForm";
 
-export const metadata: Metadata = {
-  title: "Brief Project",
-  description:
-    "Ceritakan kebutuhan website Anda. Tim Zynergy akan menghubungi Anda dengan rekomendasi dan penawaran terbaik.",
-};
+export const generateMetadata = () => pageMetadata("briefProject");
 
 export default function BriefProjectPage() {
   return (
