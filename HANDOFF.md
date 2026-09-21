@@ -10,11 +10,24 @@
 
 ## Build produksi menggantung di prompt Payload (2026-09-21)
 
-Deploy pertama "Digitalin" macet 18 menit di tahap build. Sebabnya: `payload migrate` menampilkan pertanyaan interaktif "It looks like you've run Payload in dev mode... data loss will occur. Would you like to proceed? (y/N)" dan menunggu input yang tidak akan pernah datang. Pemicunya adalah baris penanda `dev` dengan `batch = -1` di tabel `payload_migrations` database produksi situs; pertanyaan ini hanya muncul kalau ADA migrasi yang belum jalan, makanya deploy-deploy sebelumnya aman.
+Deploy "Digitalin" macet di tahap build, bukan lambat. `payload migrate` menampilkan pertanyaan interaktif "It looks like you've run Payload in dev mode... data loss will occur. Would you like to proceed? (y/N)" dan menunggu jawaban yang tidak akan pernah datang di build runner.
 
-Perbaikan: `vercel.json` situs memakai `pnpm payload migrate --forceAcceptWarning`. Database hub tidak punya baris `dev` (dicek 2026-09-21), jadi hub tidak terpengaruh; tambahkan flag yang sama di hub kalau suatu saat perlu. Pemeriksaan sebelum menjalankan: tabel `site_settings%` belum punya kolom socials, jadi migrasi `site_socials` berjalan di skema yang bersih.
+Pemicu persisnya ada di `@payloadcms/drizzle/dist/migrate.js`: kalau tabel `payload_migrations` punya baris dengan `batch = -1` (penanda yang ditulis mode dev push), prompt muncul. Database produksi SITUS punya baris itu (`name = 'dev'`); database hub tidak (dicek 2026-09-21). Prompt hanya muncul kalau ada migrasi yang belum jalan, makanya deploy-deploy sebelumnya aman.
 
-Jebakan antrean: Vercel Hobby hanya membangun satu deploy sekaligus, jadi satu build yang menggantung menahan semua deploy berikutnya di status Queued.
+Yang TIDAK menyelesaikan:
+- `payload migrate --forceAcceptWarning`. Sudah dicoba dan tetap menggantung. Di `payload/dist/bin/migrate.js`, flag itu hanya diteruskan ke `migrate:create` dan `migrate:fresh`; `case 'migrate'` memanggil `adapter.migrate()` tanpa argumen.
+- Menyalurkan jawaban lewat pipe (`printf 'y\n' | ...`). Pustaka `prompts` butuh TTY; di runner tidak ada.
+- Menjawab "y" secara manual sekalipun tidak permanen: kode hanya mengabaikan baris itu untuk penomoran batch, barisnya tetap tinggal, jadi prompt muncul lagi di deploy berikutnya.
+
+Satu-satunya perbaikan permanen adalah menghapus baris penanda di database produksi situs:
+
+```sql
+delete from payload_migrations where batch = -1;
+```
+
+Aman karena baris itu penanda, bukan migrasi; skema tidak berubah. Sebelum menjalankan, sudah dipastikan kolom socials belum ada di produksi, jadi migrasi `site_socials` berjalan di skema bersih.
+
+Jebakan antrean: Vercel Hobby hanya membangun satu deploy sekaligus, jadi satu build yang menggantung menahan semua deploy berikutnya di Queued, dan batas waktunya 45 menit.
 
 ## Zynergy Digital berganti nama menjadi Digitalin (2026-09-21, belum di-deploy)
 
