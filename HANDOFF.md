@@ -8,6 +8,14 @@
 
 ---
 
+## Deploy 15 (2026-09-21): Digitalin dan profil sosial
+
+Situs `3904309` (kode "Digitalin" ada di `3f66a91`), hub `3220447`. Migrasi `site_socials` tercatat batch 3 dan sembilan kolom socials ada di produksi; hub menjalankan delapan migrasi sekaligus di batch 11 (accounts, content_platforms, activity_and_presence, user_profile, event_kind_fokus, perintis, event_kind_mentoring, prospect_kind, accounts_password).
+
+Urutannya berantakan dan layak diingat: build situs `a8092ff` menggantung di prompt migrasi, dibatalkan Danish; `3f66a91` juga kena, tetapi setelah enam menit prompt-nya batal sendiri dan `payload migrate` KELUAR DENGAN STATUS SUKSES tanpa menjalankan migrasi, sehingga deploy hijau padahal migrasi terlewat. Baru setelah Danish menghapus baris penanda `dev` di database produksi (`neondb`), build berikutnya menjalankan `site_socials` dalam 16 ms. Pelajaran: kalau situs punya migrasi baru, cek log build memuat baris "Migrated:", jangan percaya status Ready saja.
+
+Verifikasi produksi: zynergy.co.id, /digital, /design, /blog semua 200 dengan judul "Zynergy | Digitalin, Design, Apps & Supply"; hub /seo, /perintis, /calendar, /vault/accounts, /activity semua 200.
+
 ## Build produksi menggantung di prompt Payload (2026-09-21)
 
 Deploy "Digitalin" macet di tahap build, bukan lambat. `payload migrate` menampilkan pertanyaan interaktif "It looks like you've run Payload in dev mode... data loss will occur. Would you like to proceed? (y/N)" dan menunggu jawaban yang tidak akan pernah datang di build runner.
