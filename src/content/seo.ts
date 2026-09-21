@@ -9,8 +9,8 @@ import { tentangSection } from "@/content/team";
  * global; the defaults are what the site showed before the global existed.
  */
 export const seoPages = [
-  { key: "home", label: "Beranda", path: "/", title: `${siteConfig.name} | Digital, Design, Apps & Supply`, description: companyHome.subtitle },
-  { key: "digital", label: "Digital", path: "/digital", title: "Website, Branding & Digital Marketing", description: siteConfig.description },
+  { key: "home", label: "Beranda", path: "/", title: `${siteConfig.name} | Digitalin, Design, Apps & Supply`, description: companyHome.subtitle },
+  { key: "digital", label: "Digitalin", path: "/digital", title: "Website, Branding & Digital Marketing", description: siteConfig.description },
   { key: "design", label: "Design", path: "/design", title: "Branding, Packaging & Print", description: designPage.subtitle },
   { key: "supply", label: "Supply", path: "/supply", title: "Pengadaan Barang Industri | PT Sinergi Mitra Abadi Jaya", description: supplyPage.subtitle },
   { key: "racikFitur", label: "Cek & Racik Fitur", path: "/racik-fitur", title: "Cek & Racik Fitur Website", description: "Cek dalam 1 menit apakah bisnis Anda butuh website, lalu racik fitur yang dibutuhkan. Kirim hasilnya langsung via WhatsApp. Gratis, tanpa komitmen." },
@@ -23,6 +23,6 @@ export type SeoPageKey = (typeof seoPages)[number]["key"];
 
 /** What WhatsApp, LinkedIn, and other previews show for the site as a whole. */
 export const shareDefaults = {
-  title: `${siteConfig.name} | Digital, Design, Apps & Supply`,
+  title: `${siteConfig.name} | Digitalin, Design, Apps & Supply`,
   description: siteConfig.description,
 };

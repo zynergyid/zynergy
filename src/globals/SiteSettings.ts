@@ -1,5 +1,6 @@
 import type { GlobalConfig } from "payload";
 import { seoPages } from "@/content/seo";
+import { socialPlatforms } from "@/content/socials";
 
 const seoFields = (label: string) => [
   { name: "title", type: "text" as const, label: `${label}: judul`, maxLength: 70 },
@@ -24,6 +25,13 @@ export const SiteSettings: GlobalConfig = {
       type: "text",
       label: "Tautan Google Business Profile",
       admin: { description: "Tautan profil bisnis di Google Maps; dipakai untuk penilaian SEO dan structured data." },
+    },
+    {
+      name: "socials",
+      type: "group",
+      label: "Profil sosial",
+      admin: { description: "Tampil di footer dan structured data sameAs. Kosong = tidak ditampilkan." },
+      fields: socialPlatforms.map((p) => ({ name: p.key, type: "text" as const, label: p.label })),
     },
     {
       name: "share",

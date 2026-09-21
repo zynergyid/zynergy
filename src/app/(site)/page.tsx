@@ -1,4 +1,4 @@
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, sameAsLinks } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { businessLines, companyHome } from "@/content/company";
@@ -12,7 +12,8 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export const generateMetadata = () => pageMetadata("home");
 
-export default function Home() {
+export default async function Home() {
+  const sameAs = await sameAsLinks();
   return (
     <>
       <JsonLd
@@ -23,7 +24,7 @@ export default function Home() {
           brand: { "@type": "Brand", name: siteConfig.name },
           url: siteConfig.url,
           email: siteConfig.email,
-          sameAs: Object.values(siteConfig.socials),
+          sameAs,
         }}
       />
       {/* Deep Navy group treatment: gateway only; funnel pages stay light */}
@@ -57,7 +58,7 @@ export default function Home() {
         </section>
 
         <section className="relative px-4 pb-24 sm:px-6 lg:px-8">
-        {/* Row 1: Digital flagship (full width). Row 2: Design + Apps + Supply. */}
+        {/* Row 1: Digitalin flagship (full width). Row 2: Design + Apps + Supply. */}
         <div className="mx-auto grid w-full max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-6">
           {businessLines.map((line, index) => (
             <Reveal

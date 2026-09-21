@@ -43,13 +43,13 @@ export const companyHome = {
 export const businessLines: BusinessLine[] = [
   {
     value: "digital",
-    name: "Zynergy Digital",
+    name: "Digitalin",
     tagline: "Technology, Creative & Marketing",
     description:
       "Satu tim untuk bisnis Anda bertumbuh online: website dan aplikasi, branding dan konten, sampai SEO dan iklan.",
     points: ["Website, web app & mobile", "Branding, design & motion", "SEO, ads & social media"],
     href: "/digital",
-    cta: "Jelajahi Digital",
+    cta: "Jelajahi Digitalin",
     icon: MonitorSmartphone,
     flagship: true,
   },

@@ -1,4 +1,4 @@
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata, sameAsLinks } from "@/lib/seo";
 import { faq } from "@/content/landing";
 import { siteConfig } from "@/content/site";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -18,7 +18,8 @@ import { FinalCta } from "@/components/sections/FinalCta";
 
 export const generateMetadata = () => pageMetadata("digital");
 
-export default function DigitalPage() {
+export default async function DigitalPage() {
+  const sameAs = await sameAsLinks();
   return (
     <>
       <JsonLd
@@ -30,7 +31,7 @@ export default function DigitalPage() {
           email: siteConfig.email,
           description: siteConfig.description,
           areaServed: "ID",
-          sameAs: Object.values(siteConfig.socials),
+          sameAs,
           parentOrganization: { "@type": "Organization", name: siteConfig.legalName },
         }}
       />

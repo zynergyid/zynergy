@@ -6,16 +6,25 @@ import { waLink } from "@/lib/wa";
 import { BrandMark } from "@/components/ui/BrandMark";
 import { WhatsAppIcon } from "@/components/ui/WhatsAppIcon";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
-import { FacebookIcon, LinkedInIcon, YouTubeIcon } from "@/components/ui/SocialIcons";
+import { FacebookIcon, GitHubIcon, LinkedInIcon, ThreadsIcon, TikTokIcon, XIcon, YouTubeIcon } from "@/components/ui/SocialIcons";
+import { getSocials } from "@/lib/seo";
+import type { SocialKey } from "@/content/socials";
 
-const socialLinks = [
-  { label: "Instagram", href: siteConfig.socials.instagram, Icon: InstagramIcon },
-  { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: LinkedInIcon },
-  { label: "Facebook", href: siteConfig.socials.facebook, Icon: FacebookIcon },
-  { label: "YouTube", href: siteConfig.socials.youtube, Icon: YouTubeIcon },
-];
+const icons: Record<SocialKey, (p: { className?: string }) => React.JSX.Element> = {
+  instagram: InstagramIcon,
+  threads: ThreadsIcon,
+  linkedin: LinkedInIcon,
+  whatsapp: WhatsAppIcon,
+  github: GitHubIcon,
+  facebook: FacebookIcon,
+  youtube: YouTubeIcon,
+  tiktok: TikTokIcon,
+  x: XIcon,
+};
 
-export function Footer() {
+/** Server component: the social row follows what the Hub filled in. */
+export async function Footer() {
+  const socialLinks = (await getSocials()).map((s) => ({ ...s, Icon: icons[s.key] }));
   return (
     <footer className="border-t border-line bg-white px-4 py-14 sm:px-6 lg:px-8">
       <div className="mx-auto grid w-full max-w-6xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -29,8 +38,8 @@ export function Footer() {
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-muted">{siteConfig.tagline}</p>
           <ul className="mt-5 flex gap-2.5">
-            {socialLinks.map(({ label, href, Icon }) => (
-              <li key={label}>
+            {socialLinks.map(({ key, label, href, Icon }) => (
+              <li key={key}>
                 <a
                   href={href}
                   target="_blank"

@@ -23,12 +23,11 @@ export const siteConfig = {
   corporateEmail: "info@zynergy.co.id",
   serviceArea: "Melayani seluruh Indonesia (online)",
 
-  // TODO(launch): isi URL sosial media asli, hapus yang tidak dipakai.
+  // Defaults only; the live list is edited from the Hub (site-settings global, see content/socials.ts).
   socials: {
     instagram: "https://instagram.com/zynergyid",
+    threads: "https://www.threads.net/@zynergyid",
     linkedin: "https://linkedin.com/company/zynergyid",
-    facebook: "https://facebook.com/zynergyid",
-    youtube: "https://youtube.com/@zynergyid",
   },
 
   waMessages: {
@@ -48,7 +47,7 @@ export const siteConfig = {
 
   nav: [
     { label: "Beranda", href: "/" },
-    { label: "Digital", href: "/digital" },
+    { label: "Digitalin", href: "/digital" },
     { label: "Design", href: "/design" },
     { label: "Racik Fitur", href: "/racik-fitur" },
     { label: "Paket Harga", href: "/digital#paket" },

@@ -8,6 +8,10 @@
 
 ---
 
+## Zynergy Digital berganti nama menjadi Digitalin (2026-09-21, belum di-deploy)
+
+Danish mengganti nama lini digital menjadi **Digitalin**. Yang berubah di kode: `businessLines[digital].name` dan CTA "Jelajahi Digitalin" (company.ts), label menu "Digitalin" (site.ts), judul beranda "Zynergy | Digitalin, Design, Apps & Supply" dan label halaman SEO (seo.ts), kalimat landing dan design (landing.ts, design.ts). Rute tetap `/digital`, nilai unit tetap `digital`, alamat email dan URL tidak berubah (identitas teknis, bukan nama tampilan). Frasa umum "Digital growth partner" dan "Menu Digital + QR" bukan nama lini, dibiarkan. Data CMS produksi (site-settings dan blog) tidak memuat nama lama saat dicek 2026-09-21. Hub ikut diganti (lihat HANDOFF hub).
+
 ## 0. State on 2026-09-10 (read this first)
 
 - **Prod:** serves commit `ab7dddd` (deployed 2026-09-11 night on the
@@ -110,7 +114,7 @@ unknown, first-register is closed) plus the service user `hub@zynergy.co.id`
 created 2026-09-20 by `scripts/create-hub-user.ts` against the prod DB;
 its API key had to be regenerated over REST on prod because PAYLOAD_SECRET
 is a Sensitive env var that `vercel env pull` cannot read (details in the
-hub HANDOFF, section SEO). Deployed 2026-09-20: commit ec88fcd (site-settings
+hub HANDOFF, section SEO). Social profiles (2026-09-21, uncommitted): `site-settings.socials` group edited from the Hub; `src/content/socials.ts` holds the key contract and the defaults (Instagram, Threads, LinkedIn); Footer is async and renders only filled links; `sameAsLinks()` feeds the Organization JSON-LD on / and /digital; migration `site_socials`. Facebook and YouTube defaults were removed because those accounts do not exist. Deployed 2026-09-20: commit ec88fcd (site-settings
 global, page metadata from CMS, API keys on users, two migrations) via
 `git push origin main:production`, build READY in about a minute. Gotcha: keep the Payload Blob plugin registered
 unconditionally (enabled-flag gating) or the admin importMap breaks.

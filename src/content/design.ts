@@ -11,7 +11,7 @@ import {
 /**
  * Zynergy Design line: standalone design deliverables (branding, packaging,
  * print). Growth-oriented creative work (website visuals, ad creative,
- * social content as a service) stays under Zynergy Digital.
+ * social content as a service) stays under Digitalin.
  */
 
 export interface DesignService {
@@ -25,7 +25,7 @@ export const designPage = {
   titleLead: "Branding, Packaging & Print.",
   titleHighlight: "Rapi, Konsisten, Siap Cetak.",
   subtitle:
-    "Tim desain Zynergy untuk usaha yang ingin tampil meyakinkan: dari logo dan identitas brand, kemasan, sampai materi cetak dan company profile. Dikerjakan tim yang sama dengan Zynergy Digital.",
+    "Tim desain Zynergy untuk usaha yang ingin tampil meyakinkan: dari logo dan identitas brand, kemasan, sampai materi cetak dan company profile. Dikerjakan tim yang sama dengan Digitalin.",
   trustPoints: ["Konsep sesuai brief, bukan template", "Revisi sampai pas", "File final siap cetak & digital"],
   cta: "Konsultasi via WhatsApp",
 
@@ -94,7 +94,7 @@ export const designPage = {
 
   crossLink: {
     text: "Butuh website, konten, atau iklan juga?",
-    linkLabel: "Lihat Zynergy Digital",
+    linkLabel: "Lihat Digitalin",
     href: "/digital",
   },
 

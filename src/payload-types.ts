@@ -592,6 +592,20 @@ export interface SiteSetting {
    * Tautan profil bisnis di Google Maps; dipakai untuk penilaian SEO dan structured data.
    */
   businessProfileUrl?: string | null;
+  /**
+   * Tampil di footer dan structured data sameAs. Kosong = tidak ditampilkan.
+   */
+  socials?: {
+    instagram?: string | null;
+    threads?: string | null;
+    linkedin?: string | null;
+    whatsapp?: string | null;
+    github?: string | null;
+    facebook?: string | null;
+    youtube?: string | null;
+    tiktok?: string | null;
+    x?: string | null;
+  };
   share?: {
     title?: string | null;
     description?: string | null;
@@ -643,6 +657,19 @@ export interface SiteSetting {
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   businessProfileUrl?: T;
+  socials?:
+    | T
+    | {
+        instagram?: T;
+        threads?: T;
+        linkedin?: T;
+        whatsapp?: T;
+        github?: T;
+        facebook?: T;
+        youtube?: T;
+        tiktok?: T;
+        x?: T;
+      };
   share?:
     | T
     | {

@@ -76,7 +76,7 @@ export const hero = {
   titleHighlight: "Satu Tim. Beres.",
   titleTail: "",
   subtitle:
-    "Zynergy Digital adalah tim di belakang pertumbuhan bisnis Anda: dibangun cepat, diurus jangka panjang, terhubung langsung ke penjualan. Bagian dari grup yang dipercaya industri sejak 2008.",
+    "Digitalin adalah tim di belakang pertumbuhan bisnis Anda: dibangun cepat, diurus jangka panjang, terhubung langsung ke penjualan. Bagian dari grup yang dipercaya industri sejak 2008.",
   trustPoints: [
     "Satu tim: tech, creative & marketing",
     "Diurus jangka panjang",

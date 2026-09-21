@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPayloadClient } from "@/lib/payload";
 import { seoPages, shareDefaults, type SeoPageKey } from "@/content/seo";
+import { socialDefaults, socialPlatforms, type SocialKey } from "@/content/socials";
 
 type SeoPair = { title?: string | null; description?: string | null } | null | undefined;
 
@@ -34,3 +35,16 @@ export async function shareMetadata() {
   const settings = await loadSettings();
   return pick(settings?.share, shareDefaults);
 }
+
+/** Social profiles in display order: the Hub's values when the group was ever saved, else the code defaults. */
+export async function getSocials(): Promise<{ key: SocialKey; label: string; href: string }[]> {
+  const settings = await loadSettings();
+  const edited = settings?.socials as Partial<Record<SocialKey, string | null>> | null | undefined;
+  const touched = Boolean(edited && Object.values(edited).some((v) => v && v.trim()));
+  return socialPlatforms
+    .map((p) => ({ key: p.key, label: p.label, href: (touched ? edited?.[p.key] : socialDefaults[p.key])?.trim() ?? "" }))
+    .filter((p) => p.href);
+}
+
+/** `sameAs` for the Organization structured data. */
+export const sameAsLinks = async () => (await getSocials()).map((p) => p.href);
