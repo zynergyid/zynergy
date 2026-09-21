@@ -8,6 +8,14 @@
 
 ---
 
+## Build produksi menggantung di prompt Payload (2026-09-21)
+
+Deploy pertama "Digitalin" macet 18 menit di tahap build. Sebabnya: `payload migrate` menampilkan pertanyaan interaktif "It looks like you've run Payload in dev mode... data loss will occur. Would you like to proceed? (y/N)" dan menunggu input yang tidak akan pernah datang. Pemicunya adalah baris penanda `dev` dengan `batch = -1` di tabel `payload_migrations` database produksi situs; pertanyaan ini hanya muncul kalau ADA migrasi yang belum jalan, makanya deploy-deploy sebelumnya aman.
+
+Perbaikan: `vercel.json` situs memakai `pnpm payload migrate --forceAcceptWarning`. Database hub tidak punya baris `dev` (dicek 2026-09-21), jadi hub tidak terpengaruh; tambahkan flag yang sama di hub kalau suatu saat perlu. Pemeriksaan sebelum menjalankan: tabel `site_settings%` belum punya kolom socials, jadi migrasi `site_socials` berjalan di skema yang bersih.
+
+Jebakan antrean: Vercel Hobby hanya membangun satu deploy sekaligus, jadi satu build yang menggantung menahan semua deploy berikutnya di status Queued.
+
 ## Zynergy Digital berganti nama menjadi Digitalin (2026-09-21, belum di-deploy)
 
 Danish mengganti nama lini digital menjadi **Digitalin**. Yang berubah di kode: `businessLines[digital].name` dan CTA "Jelajahi Digitalin" (company.ts), label menu "Digitalin" (site.ts), judul beranda "Zynergy | Digitalin, Design, Apps & Supply" dan label halaman SEO (seo.ts), kalimat landing dan design (landing.ts, design.ts). Rute tetap `/digital`, nilai unit tetap `digital`, alamat email dan URL tidak berubah (identitas teknis, bukan nama tampilan). Frasa umum "Digital growth partner" dan "Menu Digital + QR" bukan nama lini, dibiarkan. Data CMS produksi (site-settings dan blog) tidak memuat nama lama saat dicek 2026-09-21. Hub ikut diganti (lihat HANDOFF hub).
